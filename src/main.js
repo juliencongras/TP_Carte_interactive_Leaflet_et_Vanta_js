@@ -9,28 +9,37 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 const infoStation = {
   coordinates: [43.2181, 2.3518],
-  name: "Gare SNCF - Carcassonne"
+  name: "Gare SNCF - Carcassonne",
+  imageURL: "src/assets/carcassonne_train_station.jpg"
 }
 
 const infoCastle = {
   coordinates: [43.2068, 2.364],
-  name: "Cité de Carcassonne<"
+  name: "Cité de Carcassonne",
+  imageURL: "src/assets/cite_carcassonne.jpg"
 }
 
 const infoAirport = {
   coordinates: [43.216, 2.308],
-  name: "Aéroport de Carcassonne"
+  name: "Aéroport de Carcassonne",
+  imageURL: "src/assets/airport_carcassonne.jpeg"
 };
 
 let stationMarker = L.marker(infoStation.coordinates).addTo(map);
-stationMarker.bindPopup(`<b>${infoStation.name}</b><br>${infoStation.coordinates[0]}, ${infoStation.coordinates[1]}`);
+stationMarker.bindPopup(`<img height = 100, width = 150 src = ${infoStation.imageURL}></img><br> 
+  <b>${infoStation.name}</b><br>
+  ${infoStation.coordinates[0]}, ${infoStation.coordinates[1]}`);
 
 let castleMarker = L.marker(infoCastle.coordinates).addTo(map);
-castleMarker.bindPopup(`<b>${infoCastle.name}</b><br>${infoCastle.coordinates[0]}, ${infoCastle.coordinates[1]}`);
+castleMarker.bindPopup(`<img height = 100, width = 150 src = ${infoCastle.imageURL}></img><br>
+  <b>${infoCastle.name}</b><br>
+  ${infoCastle.coordinates[0]}, ${infoCastle.coordinates[1]}`);
 
 let airportIcon = L.icon({
     iconUrl: 'src/assets/plane-icon.svg',
     iconSize: [38, 95]
 });
 let airportMarker = L.marker(infoAirport.coordinates, {icon: airportIcon}).addTo(map);
-airportMarker.bindPopup(`<b>${infoAirport.name}</b><br>${infoAirport.coordinates[0]}, ${infoAirport.coordinates[1]}`);
+airportMarker.bindPopup(`<img height = 100, width = 150 src = ${infoAirport.imageURL}></img><br>
+  <b>${infoAirport.name}</b><br>
+  ${infoAirport.coordinates[0]}, ${infoAirport.coordinates[1]}`);
