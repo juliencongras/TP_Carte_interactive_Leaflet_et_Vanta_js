@@ -7,15 +7,30 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-let stationMarker = L.marker([43.2181, 2.3518]).addTo(map);
-stationMarker.bindPopup("<b>Gare SNCF - Carcassonne</b><br>43.2181, 2.3518");
+const infoStation = {
+  coordinates: [43.2181, 2.3518],
+  name: "Gare SNCF - Carcassonne"
+}
 
-let castleMarker = L.marker([43.2068, 2.364]).addTo(map);
-castleMarker.bindPopup("<b>Cité de Carcassonne</b><br>43.2068, 2.364");
+const infoCastle = {
+  coordinates: [43.2068, 2.364],
+  name: "Cité de Carcassonne<"
+}
+
+const infoAirport = {
+  coordinates: [43.216, 2.308],
+  name: "Aéroport de Carcassonne"
+};
+
+let stationMarker = L.marker(infoStation.coordinates).addTo(map);
+stationMarker.bindPopup(`<b>${infoStation.name}</b><br>${infoStation.coordinates[0]}, ${infoStation.coordinates[1]}`);
+
+let castleMarker = L.marker(infoCastle.coordinates).addTo(map);
+castleMarker.bindPopup(`<b>${infoCastle.name}</b><br>${infoCastle.coordinates[0]}, ${infoCastle.coordinates[1]}`);
 
 let airportIcon = L.icon({
     iconUrl: 'src/assets/plane-icon.svg',
     iconSize: [38, 95]
 });
-let airportMarker = L.marker([43.216, 2.308], {icon: airportIcon}).addTo(map);
-airportMarker.bindPopup("<b>Aéroport de Carcassonne</b><br>43.216, 2.308");
+let airportMarker = L.marker(infoAirport.coordinates, {icon: airportIcon}).addTo(map);
+airportMarker.bindPopup(`<b>${infoAirport.name}</b><br>${infoAirport.coordinates[0]}, ${infoAirport.coordinates[1]}`);
